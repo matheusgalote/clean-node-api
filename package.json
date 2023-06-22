@@ -7,6 +7,11 @@
     "test": "jest --watch",
     "test:staged": "jest"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
