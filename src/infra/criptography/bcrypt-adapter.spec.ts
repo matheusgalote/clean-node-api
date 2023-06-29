@@ -31,7 +31,7 @@ describe('Bcrypt Adapter', () => {
     expect(hash).toBe('valid_hash')
   })
 
-  test('Should throw id bcrypt throws', async () => {
+  test('Should throw if bcrypt throws', async () => {
     const sut = makeSut()
 
     jest
