@@ -6,6 +6,6 @@
   "rules": {
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/method-signature-style": "off",
-    "@typescript-eslint/prefer-nullish-coalescing": "on"
+    "@typescript-eslint/prefer-nullish-coalescing": "warn"
   }
 }
