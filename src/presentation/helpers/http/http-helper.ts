@@ -1,6 +1,6 @@
-import { UnauthorizedError } from '../errors'
-import { ServerError } from '../errors/server-error'
-import type { HttpResponse } from '../protocols/http'
+import { UnauthorizedError } from '../../errors'
+import { ServerError } from '../../errors/server-error'
+import type { HttpResponse } from '../../protocols/http'
 
 export function badRequest (error: Error): HttpResponse {
   return {
