@@ -4,9 +4,10 @@ import {
   type HashComparer,
   type Encrypter,
   type LoadAccountByEmailRepository,
-  type UpdateAccessToken,
+  type UpdateAccessTokenRepository,
   type AccountModel
 } from './db-authentication-protocols'
+import { type Condition, type ObjectId } from 'mongodb'
 
 const makeFakeAccount = (): AccountModel => ({
   id: 'any_id',
@@ -50,9 +51,9 @@ const makeEncrypter = (): Encrypter => {
   return new EncrypterStub()
 }
 
-const makeUpdateAccessTokenRepository = (): UpdateAccessToken => {
-  class UpdateAccessTokenRepositoryStub implements UpdateAccessToken {
-    async updateAccessToken (id: string, token: string): Promise<void> {
+const makeUpdateAccessTokenRepository = (): UpdateAccessTokenRepository => {
+  class UpdateAccessTokenRepositoryStub implements UpdateAccessTokenRepository {
+    async updateAccessToken (id: Condition<ObjectId>, token: string): Promise<void> {
       return await new Promise(resolve => resolve())
     }
   }
@@ -65,7 +66,7 @@ interface SutTypes {
   loadAccountByEmailRepository: LoadAccountByEmailRepository
   hashComparerStub: HashComparer
   encrypterStub: Encrypter
-  updateAccessTokenRepositoryStub: UpdateAccessToken
+  updateAccessTokenRepositoryStub: UpdateAccessTokenRepository
 }
 
 const makeSut = (): SutTypes => {
