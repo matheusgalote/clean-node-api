@@ -12,3 +12,14 @@ export const map = async (accountCollection: any, result: any): Promise<AccountM
 
   return account
 }
+
+export const getMap = async (accountData: any): Promise<AccountModel> => {
+  const { _id, ...accountWithoutId } = accountData
+  const account = Object.assign(
+    {},
+    accountWithoutId,
+    { id: _id.toHexString() }
+  ) as AccountModel
+
+  return account
+}
