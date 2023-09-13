@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3"
 services: 
   mongo: 
     container_name: mongo-container
@@ -6,8 +6,8 @@ services:
     restart: always
     volumes: 
       - ./data:/data/db
-    port: 
-      - "27017:27017"
+    ports: 
+      - "27018:27017"
   api:
     container_name: api-container
     build: .
@@ -19,4 +19,4 @@ services:
       - "3333:3333"
     restart: always
     links: 
-      -mongo
+      - mongo
