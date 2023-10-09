@@ -1,4 +1,3 @@
-import { resolve } from 'path'
 import { type Decrypter } from '../../protocols/criptography/decrypter'
 import { DbLoadAccountByToken } from './db-load-account-by-token'
 
