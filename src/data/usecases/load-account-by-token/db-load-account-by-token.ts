@@ -14,6 +14,6 @@ export class DbLoadAccountByToken implements LoadAccountByToken {
     if (accessToken) {
       await this.loadAccountByTokenRepository.loadByToken(token, role)
     }
-    return await new Promise(resolve => resolve(null))
+    return null
   }
 }
