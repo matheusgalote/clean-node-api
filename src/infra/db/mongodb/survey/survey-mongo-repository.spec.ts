@@ -20,7 +20,6 @@ describe('Account Mongo Repository', () => {
 
   const makeSut = (): SurveyMongoRepository => {
     const sut = new SurveyMongoRepository()
-
     return sut
   }
 
@@ -36,7 +35,8 @@ describe('Account Mongo Repository', () => {
         {
           answer: 'any_answer'
         }
-      ]
+      ],
+      date: new Date()
     })
     const survey = await surveyCollection.findOne(({ question: 'any_question' }))
     expect(survey).toBeTruthy()
