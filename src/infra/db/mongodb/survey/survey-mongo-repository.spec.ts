@@ -9,6 +9,27 @@ const makeSut = (): SurveyMongoRepository => {
   return sut
 }
 
+const insertData = [{
+  question: 'any_question',
+  answers: [
+    {
+      image: 'any_image',
+      answer: 'any_answer'
+    }
+  ],
+  date: new Date()
+},
+{
+  question: 'other_question',
+  answers: [
+    {
+      image: 'other_image',
+      answer: 'other_answer'
+    }
+  ],
+  date: new Date()
+}]
+
 describe('Account Mongo Repository', () => {
   beforeAll(async () => {
     await MongoHelper.connect(String(process.env.MONGO_URL))
@@ -44,7 +65,14 @@ describe('Account Mongo Repository', () => {
     })
   })
 
-  describe('load()', () => {
-
+  describe('loadAll()', () => {
+    test('Should loadAll surveys on success', async () => {
+      await surveyCollection.insertMany(insertData)
+      const sut = makeSut()
+      const surveys = await sut.loadAll()
+      expect(surveys.length).toBe(2)
+      expect(surveys[0].question).toBe(insertData[0].question)
+      expect(surveys[1].question).toBe(insertData[1].question)
+    })
   })
 })
